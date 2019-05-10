@@ -23,7 +23,7 @@ CODES SEGMENT
 START:
     MOV AX,DATAS            ;see page 404 to understand the program
     MOV DS,AX
-    ;
+    
 	MOV AH,3DH				;Open image.bmp
 	LEA DX,FILENAME1		;DX = offset of filename
 	MOV AL,0				;read only
