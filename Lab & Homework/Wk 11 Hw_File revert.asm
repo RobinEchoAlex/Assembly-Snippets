@@ -26,7 +26,7 @@ START:
     
     MOV AH,3DH          ;open ABC.txt
     LEA DX,filename1
-    MOV AL,0            ;NOTE likely that open in read only cause error 
+    MOV AL,0            ;NOTE likely that open in read only mode cause error 
     INT 21H
     JC ERR1
     MOV handle1,AX
@@ -39,7 +39,7 @@ START:
     MOV handle2,AX
 
     LEA DX,read         ;DX = i 
-READ_S:                 ;repeatly read file until EOF, read 255 bits every time
+READ_S:                 ;repeatly read file until EOF, read 255 bits each time
     MOV AH,3FH
     MOV BX,handle1
     MOV CX,255
@@ -52,7 +52,7 @@ READ_S:                 ;repeatly read file until EOF, read 255 bits every time
                         
                         ;start to filp the array read into write
     MOV CX,len          ;loop time = len
-    LEA SI,read-1       ;DO NOT USER MOV!!! DO NOT LEA 8 BIT REGISTER
+    LEA SI,read-1       ;DO NOT USE MOV!!! DO NOT LEA TO 8 BIT REGISTER
     ADD SI,len          ;iterator SI from end of 'read'->start of it
     LEA DI,write        ;iterator DI from start of 'write'->end of it
 FLIP:                 
