@@ -15,16 +15,16 @@ START:
     MOV AX,DATAS
     MOV DS,AX
     ;
-    MOV BX,0F000H	;test number
-    MOV CL,13		;times of shift
-    SHR BX,CL		;right shift BX 13 times
+    MOV BX,0F000H    ;test number
+    MOV CL,13        ;times of shift
+    SHR BX,CL        ;right shift BX 13 times
     
-    MOV CX,16H		;test number
-    MOV AX,CX		;store it directly into AX 
-    MOV CL,3H		;times of shift
-    SHL AX,CL		;shift AX left 3 times
+    MOV CX,16H       ;test number
+    MOV AX,CX        ;store it directly into AX 
+    MOV CL,3H        ;times of shift
+    SHL AX,CL        ;shift AX left 3 times
     
-    ADD AL,BL		;add shifted BL
+    ADD AL,BL        ;add shifted BL
     
     MOV AH,4CH
     INT 21H

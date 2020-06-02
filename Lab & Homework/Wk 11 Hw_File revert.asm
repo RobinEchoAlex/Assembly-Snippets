@@ -2,16 +2,16 @@
 ;Note this program can only handle file up to 1025 bit
 DATAS SEGMENT
     filename1 DB 'D:\ABC.txt',00
-	filename2 DB 'D:\CBA.txt',00
-	handle1 DW ?            
-	handle2 DW ?
-	read DB 1025 DUP(0)     ;content read
-	write DB 1025 DUP(0)    ;content to write
+    filename2 DB 'D:\CBA.txt',00
+    handle1 DW ?            
+    handle2 DW ?
+    read DB 1025 DUP(0)     ;content read
+    write DB 1025 DUP(0)    ;content to write
     len DW 0
-	error1 DB 'Cannot Open File!',0DH,0AH,'$'
-	error2 DB 'Cannot Create File!',0DH,0AH,'$'
-	error3 DB 'Read File Exception!',0DH,0AH,'$'
-	error4 DB 'Write File Exception!',0DH,0AH,'$' 
+    error1 DB 'Cannot Open File!',0DH,0AH,'$'
+    error2 DB 'Cannot Create File!',0DH,0AH,'$'
+    error3 DB 'Read File Exception!',0DH,0AH,'$'
+    error4 DB 'Write File Exception!',0DH,0AH,'$' 
 DATAS ENDS
 
 STACKS SEGMENT
@@ -84,24 +84,24 @@ FINISH:
     INT 21H
     
 ERR1:
-	MOV AH,9
-	LEA DX,ERROR1
-	INT 21H
-	JMP FINISH
+    MOV AH,9
+    LEA DX,ERROR1
+    INT 21H
+    JMP FINISH
 ERR2:
-	MOV AH,9
-	LEA DX,ERROR2
-	INT 21H
-	JMP CLOSE_1 
+    MOV AH,9
+    LEA DX,ERROR2
+    INT 21H
+    JMP CLOSE_1 
 ERR3:
-	MOV AH,9
-	LEA DX,ERROR3
-	INT 21H
-	JMP CLOSE_2 
+    MOV AH,9
+    LEA DX,ERROR3
+    INT 21H
+    JMP CLOSE_2 
 ERR4:
-	MOV AH,9
-	LEA DX,ERROR4
-	INT 21H
-	JMP CLOSE_2
+    MOV AH,9
+    LEA DX,ERROR4
+    INT 21H
+    JMP CLOSE_2
 CODES ENDS
     END START
